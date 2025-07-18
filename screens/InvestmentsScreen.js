@@ -202,11 +202,14 @@ const InvestmentsScreen = () => {
           title="Export to S3"
           onPress={async () => {
             try {
-              await fetch('http://localhost:4000/upload', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ records }),
-              });
+              await fetch(
+                'https://cryptopulse-backend-bsz3.onrender.com/upload',
+                {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ records }),
+                }
+              );
               alert('Uploaded investments to S3!');
             } catch (e) {
               alert('Export failed: ' + e.message);
